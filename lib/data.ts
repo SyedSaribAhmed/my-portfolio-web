@@ -96,8 +96,7 @@ export const projects = [
 ];
 
 export const socialLinks = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/YOUR-USERNAME' },
-  { label: 'GitHub', href: 'https://github.com/YOUR-USERNAME' },
-  { label: 'Twitter', href: 'https://twitter.com/YOUR-USERNAME' },
-  { label: 'Email', href: 'mailto:your@email.com' }
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syed-sarib-ahmed-5a2a471a8/' },
+  { label: 'GitHub', href: 'https://github.com/SyedSaribAhmed' },
+  { label: 'Email', href: 'mailto:saribahmed974@gmail.com' }
 ];
