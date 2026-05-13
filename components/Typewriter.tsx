@@ -8,8 +8,15 @@ export default function Typewriter() {
   const [display, setDisplay] = useState('AI Engineer.');
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const interval = window.setInterval(() => {
       setVisible(false);
       window.setTimeout(() => {
@@ -21,7 +28,16 @@ export default function Typewriter() {
     }, 4200);
 
     return () => window.clearInterval(interval);
-  }, [index]);
+  }, [index, isClient]);
+
+  if (!isClient) {
+    return (
+      <span className="relative inline-flex items-center">
+        <span className="text-white/90">AI Engineer.</span>
+        <span className="ml-2 h-6 w-1 rounded bg-neonpurple" />
+      </span>
+    );
+  }
 
   return (
     <span className="relative inline-flex items-center">
