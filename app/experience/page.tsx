@@ -1,3 +1,5 @@
+'use client';
+
 import SectionHeading from '../../components/SectionHeading';
 import TimelineItem from '../../components/TimelineItem';
 import { timeline } from '../../lib/data';

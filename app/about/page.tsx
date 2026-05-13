@@ -1,3 +1,5 @@
+'use client';
+
 import SkillPill from '../../components/SkillPill';
 import SectionHeading from '../../components/SectionHeading';
 import TerminalProfile from '../../components/TerminalProfile';
