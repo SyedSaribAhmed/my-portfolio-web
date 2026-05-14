@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -15,7 +15,7 @@ const navItems = [
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,53 +34,88 @@ export default function Navbar() {
       if (section) observer.observe(section);
     });
 
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 text-sm sm:px-8">
-        <Link href="#home" className="text-lg font-medium tracking-tight text-white">
-          SA<span className="text-violet-400">.</span>
-        </Link>
-        <nav className="hidden sm:block">
-          <ul className="flex items-center gap-8">
-            {navItems.map((item) => {
-              const active = activeSection === item.href.slice(1);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`relative px-3 py-1 text-sm font-medium transition-colors duration-200 ${
-                      active ? 'text-white' : 'text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    {item.label}
-                    {active && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute left-3 right-3 bottom-0 h-0.5 bg-gradient-to-r from-violet-500 to-purple-500"
-                        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-                      />
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+    <header className="fixed top-0 right-0 z-50 p-6">
+      <div className="flex items-center gap-4">
         <Link
-          href="#contact"
-          className="hidden sm:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-5 py-2 text-sm font-medium text-white transition-all duration-200 hover:from-violet-500 hover:to-purple-500 hover:shadow-lg hover:shadow-violet-500/25"
+          href="#home"
+          className="text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors"
         >
-          Let's Talk
+          SA
         </Link>
+
+        <motion.button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="relative z-50 h-12 w-12 rounded-full bg-white/80 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-105"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-700">
+            <motion.path
+              d="M4 6H20M4 12H20M4 18H20"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              animate={isMenuOpen ? { d: 'M6 18L18 6M6 6L18 18' } : { d: 'M4 6H20M4 12H20M4 18H20' }}
+              transition={{ duration: 0.3 }}
+            />
+          </svg>
+        </motion.button>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+                onClick={() => setIsMenuOpen(false)}
+              />
+              <motion.nav
+                initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.9, x: 20 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="absolute right-16 top-2 w-56 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl p-4"
+              >
+                <ul className="space-y-1">
+                  {navItems.map((item) => {
+                    const active = activeSection === item.href.slice(1);
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                            active
+                              ? 'bg-slate-900 text-white'
+                              : 'text-slate-700 hover:bg-slate-100'
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="mt-4 pt-4 border-t border-slate-200">
+                  <Link
+                    href="#contact"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white transition-all duration-200 hover:bg-slate-800"
+                  >
+                    Let's Talk
+                  </Link>
+                </div>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

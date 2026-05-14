@@ -53,7 +53,7 @@ export default function HomePage() {
     <>
       <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 py-20 sm:px-8">
         <ParticleCanvas />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(124,58,237,0.08),_transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(120,119,198,0.08),_transparent_70%)]" />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
           <motion.div
             initial="hidden"
@@ -136,22 +136,6 @@ export default function HomePage() {
               <span className="text-sm font-medium">n8n</span>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
-          >
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="h-10 w-6 rounded-full border border-white/10 p-2"
-            >
-              <div className="h-1.5 w-1.5 rounded-full bg-slate-400" />
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 
@@ -172,7 +156,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -180,18 +164,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/10"
+                className="group relative rounded-2xl border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.01] p-7 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/10"
               >
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${service.gradient} bg-opacity-10 text-2xl mb-4`}>
+                <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${service.gradient} bg-opacity-10 text-xl mb-4`}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-lg font-semibold text-white mb-2.5">
                   {service.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-slate-400 text-sm leading-relaxed">
                   {service.description}
                 </p>
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-5 -z-10`} />
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-[0.03] -z-10`} />
               </motion.div>
             ))}
           </div>
@@ -266,21 +250,39 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-12 grid gap-5 sm:grid-cols-2"
           >
-            {skills.slice(0, 8).map((skill, index) => (
-              <div key={skill.name} className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center">
-                <p className="text-sm font-medium text-white">{skill.name}</p>
-                <div className="mt-2 h-1.5 w-full rounded-full bg-white/5 overflow-hidden">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="rounded-xl border border-white/5 bg-white/[0.02] p-5"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-sm font-medium text-white">{skill.name}</p>
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.05 + 0.3 }}
+                    className="text-xs font-semibold text-violet-400"
+                  >
+                    {Math.round(skill.level * 100)}%
+                  </motion.span>
+                </div>
+                <div className="h-2 w-full rounded-full bg-white/5 overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.level * 100}%` }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
+                    transition={{ duration: 1, delay: index * 0.05, ease: 'easeOut' }}
                     className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -303,38 +305,59 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-violet-500/50 via-purple-500/50 to-transparent" />
+
             {timeline.map((item, index) => (
               <motion.div
                 key={`${item.role}-${item.company}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/10"
+                transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
+                className="relative pl-20 pb-12 last:pb-0"
               >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
-                        {item.role.charAt(0)}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{item.role}</h3>
-                        <p className="text-sm text-slate-400">{item.company}</p>
-                      </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.15 + 0.2, type: 'spring' }}
+                  className="absolute left-5 top-2 h-6 w-6 rounded-full bg-gradient-to-br from-violet-500 to-purple-500 border-4 border-[#0a0a0a]"
+                />
+
+                <div className="group relative rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:bg-white/[0.04] hover:border-white/10">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-white">{item.role}</h3>
+                      <p className="text-sm text-violet-400 mt-1">{item.company}</p>
                     </div>
+                    <span className="text-xs text-slate-500 whitespace-nowrap px-3 py-1 rounded-full bg-white/5">
+                      {item.date}
+                    </span>
                   </div>
-                  <span className="text-sm text-slate-500 whitespace-nowrap">{item.date}</span>
+
+                  <motion.ul
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.15 + 0.4 }}
+                    className="mt-5 space-y-2"
+                  >
+                    {item.points.map((point, pointIndex) => (
+                      <motion.li
+                        key={point}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.15 + 0.5 + pointIndex * 0.1 }}
+                        className="flex gap-3 text-slate-400 text-sm leading-relaxed"
+                      >
+                        <span className="text-violet-400 mt-0.5 flex-shrink-0">→</span>
+                        <span>{point}</span>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
                 </div>
-                <ul className="mt-6 space-y-3">
-                  {item.points.map((point) => (
-                    <li key={point} className="flex gap-3 text-slate-400 text-sm">
-                      <span className="text-violet-400 mt-1">•</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
