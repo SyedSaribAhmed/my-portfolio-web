@@ -34,10 +34,10 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={heroVariants} transition={{ duration: 0.9, delay: 0.2 }} className="flex flex-col gap-4 sm:flex-row">
-            <Link href="#projects" scroll={false} className="inline-flex items-center justify-center rounded-full bg-neonpurple px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-violet">
+            <Link href="#projects" className="inline-flex items-center justify-center rounded-full bg-neonpurple px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-violet">
               View My Work
             </Link>
-            <Link href="#contact" scroll={false} className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-neonpurple hover:bg-white/10">
+            <Link href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-neonpurple hover:bg-white/10">
               Get In Touch
             </Link>
           </motion.div>

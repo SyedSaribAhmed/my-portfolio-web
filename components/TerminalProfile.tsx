@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const profile = `{
-  "name": "Your Name",
+  "name": "Syed Sarib Ahmed",
   "title": "AI Automation Specialist",
   "location": "Remote / Hybrid",
   "focus": ["Workflow Automation", "AI Agents", "RAG", "Prompt Engineering"],
