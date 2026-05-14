@@ -19,78 +19,38 @@ export const skills = [
 
 export const timeline = [
   {
-    role: 'AI Automation Engineer',
-    company: 'AutomationLab Co.',
-    date: '2024 — Present',
+    role: 'Full Stack AI Trainer',
+    company: 'Freelance (Remote)',
+    date: 'Jan 2025 — Feb 2026',
     points: [
-      'Lead the design and deployment of AI-driven workflow automation systems using LangChain, n8n, and Python.',
-      'Built autonomous orchestration pipelines for data ingestion, processing, and reporting across enterprise systems.',
-      'Scaled agent-based automations to reduce manual task overhead by over 60% and accelerate decision-making.'
+      'Designed and evaluated 100+ coding tasks across Python and TypeScript to train frontier LLMs, scoring model outputs on accuracy, instruction-following, edge-case handling, and code quality using structured rubrics aligned with RLHF methodologies.',
+      'Authored gold-standard responses and adversarial multi-turn prompt scenarios used to stress-test model behavior, directly improving output consistency and task relevance across production AI pipelines.',
+      'Operated fully asynchronously across international time zones, consistently meeting quality benchmarks and delivery deadlines; demonstrating readiness for high-performance remote engineering roles.'
     ]
   },
   {
-    role: 'AI Developer & Consultant',
-    company: 'Freelance / Contract',
-    date: '2023 — 2024',
+    role: 'AI Associate',
+    company: 'NBP',
+    date: 'July 2024 — Dec 2024',
     points: [
-      'Delivered generative AI prototypes and automation solutions for startups and product teams.',
-      'Integrated OpenAI and Anthropic APIs into custom platforms for conversational assistants and knowledge workflows.',
-      'Created production-ready prompt frameworks and RAG systems to improve search relevance and content summarization.'
-    ]
-  },
-  {
-    role: 'Machine Learning Intern',
-    company: 'Neo Labs',
-    date: '2022 — 2023',
-    points: [
-      'Built computer vision pipelines for anomaly detection and automated process monitoring.',
-      'Developed retrieval-augmented generation workflows and embedding search prototypes for internal research.',
-      'Partnered with cross-functional teams on AI product strategy, technical documentation, and deployment planning.'
+      'Identified and scoped automation opportunities across internal banking workflows, reducing manual reporting overhead by streamlining data collection and processing pipelines.',
+      'Built and maintained structured data systems to support decision-making, applying Python scripting to automate repetitive data tasks and generate actionable insights.',
+      'Designed and implemented data pipelines for operational efficiency and strategic business intelligence.'
     ]
   }
 ];
 
 export const projects = [
   {
-    title: 'Autonomous Data Ops Suite',
-    description: 'A self-healing automation platform that ingests, enriches, and routes operational data with AI-driven decision logic.',
-    tags: ['Python', 'LangChain', 'n8n'],
+    title: 'AI-Powered Voting Platform',
+    description: 'A full-stack voting platform with role-based authentication (admin, candidate, voter) and a live WebSocket dashboard delivering sub-second real-time vote analytics. Integrated AI-powered sentiment analysis module using OpenAI API to process voter comments and surface opinion trends.',
+    tags: ['Node.js', 'Express', 'MySQL', 'WebSockets', 'JWT Auth', 'OpenAI API', 'NLP'],
     href: '#'
   },
   {
-    title: 'AI Concierge Agent',
-    description: 'Conversational AI assistant that coordinates tasks, schedules, and document search across internal systems.',
-    tags: ['OpenAI API', 'AI Agents', 'Vector Databases'],
-    href: '#'
-  },
-  {
-    title: 'RAG Knowledge Hub',
-    description: 'A research dashboard with vector retrieval and automated summarization for high-value technical teams.',
-    tags: ['RAG', 'Anthropic API', 'Python'],
-    href: '#'
-  },
-  {
-    title: 'Prompt Delivery Engine',
-    description: 'A prompt orchestration layer that manages templates, dynamic context, and API routing for automation workflows.',
-    tags: ['Prompt Engineering', 'TypeScript', 'LangGraph'],
-    href: '#'
-  },
-  {
-    title: 'Workflow Orchestration Portal',
-    description: 'A low-code automation control plane for monitoring and adjusting AI-powered business processes.',
-    tags: ['Make', 'Zapier', 'Python'],
-    href: '#'
-  },
-  {
-    title: 'Vision Ops Prototype',
-    description: 'Computer vision pipeline prototype for object recognition and action triggers in industrial settings.',
-    tags: ['Computer Vision', 'Python', 'AI Agents'],
-    href: '#'
-  },
-  {
-    title: 'Client Journey Automation',
-    description: 'End-to-end client intake automation that reduces onboarding time and improves follow-up messaging.',
-    tags: ['n8n', 'Zapier', 'OpenAI API'],
+    title: 'AI-Powered Supply Chain Lead Qualification & Outreach Automation',
+    description: 'Architected a 5-agent Waterfall pipeline to autonomously qualify and route inbound supply-chain leads, cutting response time from 54 hrs to 6 hrs and reducing rep qualification workload by 83%. Built a domain-specific BANT-S scoring model with Claude API prompt chaining, lifting lead-to-meeting conversion from 11% to 17% and reducing cost per qualified lead from $42 to $11.',
+    tags: ['Make.com', 'Claude API', 'Apify', 'Apollo.io', 'Perplexity API', 'HubSpot', 'Instantly.ai'],
     href: '#'
   }
 ];
