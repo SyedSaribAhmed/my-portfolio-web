@@ -201,15 +201,15 @@ export default function HomePage() {
                   Get a complete overview of my AI automation experience, consulting engagements, and project outcomes.
                 </p>
                 <a
-                  href="#"
+                  href="/SyedSaribAhmed-Resume.pdf"
+                  download
                   className="mt-6 inline-flex items-center justify-center rounded-full bg-neonpurple px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-violet"
                 >
                   Download Resume
                 </a>
                 <p className="mt-6 text-sm text-slate-400">
-                  Note: Replace this link with your hosted PDF or resume download file when ready.
+                  Download the PDF version of my resume.
                 </p>
-                {/* TODO: Replace the href above with the actual PDF embed or download link */}
               </div>
               <div className="rounded-3xl border border-white/10 bg-[#111827]/90 p-8 shadow-neon">
                 <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Resume highlights</p>
