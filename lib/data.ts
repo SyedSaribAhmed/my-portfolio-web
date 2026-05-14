@@ -42,6 +42,7 @@ export const timeline = [
 
 export const projects = [
   {
+    slug: 'ai-voting-platform',
     title: 'AI-Powered Voting Platform',
     description: 'A secure voting system with role-based access, live WebSocket analytics, and AI sentiment processing for voter comments.',
     outcome: 'Real-time vote monitoring with opinion trends surfaced for admins.',
@@ -49,9 +50,10 @@ export const projects = [
     visualLabel: 'Live election analytics',
     visualType: 'dashboard',
     tags: ['Node.js', 'Express', 'Dashboards', 'WebSockets', 'JWT Auth', 'OpenAI API', 'NLP'],
-    href: '#'
+    href: '/case-studies/ai-voting-platform'
   },
   {
+    slug: 'supply-chain-automation',
     title: 'AI-Powered Supply Chain Lead Qualification & Outreach Automation',
     description: 'A 5-agent qualification and routing pipeline for inbound supply-chain leads, backed by BANT-S scoring and prompt chaining.',
     outcome: 'Cut response time from 54 hrs to 6 hrs and reduced qualification workload by 83%.',
@@ -59,7 +61,7 @@ export const projects = [
     visualLabel: 'Agent pipeline',
     visualType: 'pipeline',
     tags: ['AI Agents', 'Automation', 'Claude API', 'Apify', 'Apollo.io', 'HubSpot', 'Instantly.ai'],
-    href: '#'
+    href: '/case-studies/supply-chain-automation'
   }
 ];
 

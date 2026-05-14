@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface ProjectCardProps {
   title: string;
@@ -147,14 +148,15 @@ export default function ProjectCard({ title, description, outcome, visualLabel, 
           </motion.p>
         )}
 
-        <motion.a
-          href={href}
-          className="mt-auto inline-flex w-fit items-center gap-2 pt-8 text-sm font-semibold text-[#6bb8c0] transition-colors group-hover:text-white"
-          whileHover={{ gap: '0.5rem' }}
-        >
-          View case study
-          <span className="transform transition-transform group-hover:translate-x-1">-&gt;</span>
-        </motion.a>
+        <Link href={href} className="mt-auto inline-flex w-fit items-center gap-2 pt-8 text-sm font-semibold text-[#6bb8c0] transition-colors group-hover:text-white">
+          <motion.span
+            whileHover={{ gap: '0.5rem' }}
+            className="inline-flex items-center gap-2"
+          >
+            View case study
+            <span className="transform transition-transform group-hover:translate-x-1">-&gt;</span>
+          </motion.span>
+        </Link>
       </div>
     </motion.article>
   );

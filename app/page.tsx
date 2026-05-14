@@ -86,7 +86,7 @@ export default function HomePage() {
               className="mt-10 flex flex-col gap-3 sm:flex-row"
             >
               <Link
-                href="#projects"
+                href="/case-studies"
                 className="inline-flex items-center justify-center rounded-full border border-[#4a9ea6]/[0.35] bg-[#4a9ea6]/[0.14] px-8 py-3.5 text-sm font-semibold text-[#a8dce1] shadow-[0_0_30px_rgba(74,158,166,0.12)] transition-all duration-200 hover:border-[#6bb8c0]/60 hover:bg-[#4a9ea6]/20"
               >
                 View case studies
