@@ -1,28 +1,49 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Contact', href: '/contact' }
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Resume', href: '#resume' }
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    navItems.forEach((item) => {
+      const section = document.getElementById(item.href.slice(1));
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-[#0a0a0a]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 text-sm text-slate-300 sm:px-8">
-        <Link href="/" className="font-semibold text-white/90">AI Automation</Link>
+        <Link href="#home" className="font-semibold text-white/90">AI Automation</Link>
         <nav>
           <ul className="flex flex-wrap items-center gap-2 sm:gap-4">
             {navItems.map((item) => {
-              const active = pathname === item.href;
+              const active = activeSection === item.href.slice(1);
               return (
                 <li key={item.href} className="relative overflow-hidden">
                   <Link href={item.href} className="transition-colors duration-200 hover:text-white">
