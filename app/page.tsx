@@ -7,9 +7,10 @@ import Typewriter from '../components/Typewriter';
 import SkillPill from '../components/SkillPill';
 import SectionHeading from '../components/SectionHeading';
 import TerminalProfile from '../components/TerminalProfile';
+import TimelineItem from '../components/TimelineItem';
 import ProjectsGallery from '../components/ProjectsGallery';
 import ContactForm from '../components/ContactForm';
-import { skills, socialLinks } from '../lib/data';
+import { skills, socialLinks, timeline } from '../lib/data';
 
 const heroVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -86,8 +87,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="experience" className="min-h-screen pt-20 px-6">
-        <h1 className="text-4xl font-bold text-purple-400">Experience</h1>
+      <section id="experience" className="px-6 py-14 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading title="Experience" subtitle="Career" />
+          <div className="space-y-6">
+            {timeline.map((item, index) => (
+              <TimelineItem
+                key={`${item.role}-${item.company}`}
+                role={item.role}
+                company={item.company}
+                date={item.date}
+                points={item.points}
+                align={index % 2 === 0 ? 'left' : 'right'}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       <section id="projects" className="px-6 py-14 sm:px-8">
