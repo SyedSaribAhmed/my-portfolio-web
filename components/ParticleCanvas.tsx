@@ -11,7 +11,7 @@ interface Particle {
   alpha: number;
 }
 
-const particleCount = 80;
+const particleCount = 56;
 
 export default function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -59,7 +59,7 @@ export default function ParticleCanvas() {
     const draw = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.35)';
+      ctx.fillStyle = 'rgba(7, 8, 9, 0.35)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle) => {
@@ -72,16 +72,16 @@ export default function ParticleCanvas() {
         const dx = particle.x - mouse.current.x;
         const dy = particle.y - mouse.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const repel = Math.max(0, 120 - dist) * 0.0015;
-        particle.vx += (dx / dist) * repel;
-        particle.vy += (dy / dist) * repel;
+        const repel = dist === 0 ? 0 : Math.max(0, 120 - dist) * 0.0015;
+        particle.vx += (dx / Math.max(dist, 1)) * repel;
+        particle.vy += (dy / Math.max(dist, 1)) * repel;
 
         particle.vx *= 0.98;
         particle.vy *= 0.98;
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(168, 85, 247, ${particle.alpha})`;
+        ctx.fillStyle = `rgba(34, 211, 238, ${particle.alpha * 0.55})`;
         ctx.fill();
       });
 
@@ -93,7 +93,7 @@ export default function ParticleCanvas() {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.08 + (120 - dist) / 120 * 0.1})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${0.05 + (120 - dist) / 120 * 0.08})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);

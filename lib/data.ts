@@ -21,7 +21,7 @@ export const timeline = [
   {
     role: 'Full Stack AI Trainer',
     company: 'Freelance (Remote)',
-    date: 'Jan 2025 — Feb 2026',
+    date: 'Jan 2025 - Feb 2026',
     points: [
       'Designed and evaluated 100+ coding tasks across Python and TypeScript to train frontier LLMs, scoring model outputs on accuracy, instruction-following, edge-case handling, and code quality using structured rubrics aligned with RLHF methodologies.',
       'Authored gold-standard responses and adversarial multi-turn prompt scenarios used to stress-test model behavior, directly improving output consistency and task relevance across production AI pipelines.',
@@ -31,7 +31,7 @@ export const timeline = [
   {
     role: 'AI Associate',
     company: 'NBP',
-    date: 'July 2024 — Dec 2024',
+    date: 'July 2024 - Dec 2024',
     points: [
       'Identified and scoped automation opportunities across internal banking workflows, reducing manual reporting overhead by streamlining data collection and processing pipelines.',
       'Built and maintained structured data systems to support decision-making, applying Python scripting to automate repetitive data tasks and generate actionable insights.',
@@ -43,14 +43,22 @@ export const timeline = [
 export const projects = [
   {
     title: 'AI-Powered Voting Platform',
-    description: 'A full-stack voting platform with role-based authentication (admin, candidate, voter) and a live WebSocket dashboard delivering sub-second real-time vote analytics. Integrated AI-powered sentiment analysis module using OpenAI API to process voter comments and surface opinion trends.',
-    tags: ['Node.js', 'Express', 'MySQL', 'WebSockets', 'JWT Auth', 'OpenAI API', 'NLP'],
+    description: 'A secure voting system with role-based access, live WebSocket analytics, and AI sentiment processing for voter comments.',
+    outcome: 'Real-time vote monitoring with opinion trends surfaced for admins.',
+    hoverText: 'Built sentiment analysis pipeline processing 10K+ comments with OpenAI API. Reduced moderation workload by 65%.',
+    visualLabel: 'Live election analytics',
+    visualType: 'dashboard',
+    tags: ['Node.js', 'Express', 'Dashboards', 'WebSockets', 'JWT Auth', 'OpenAI API', 'NLP'],
     href: '#'
   },
   {
     title: 'AI-Powered Supply Chain Lead Qualification & Outreach Automation',
-    description: 'Architected a 5-agent Waterfall pipeline to autonomously qualify and route inbound supply-chain leads, cutting response time from 54 hrs to 6 hrs and reducing rep qualification workload by 83%. Built a domain-specific BANT-S scoring model with Claude API prompt chaining, lifting lead-to-meeting conversion from 11% to 17% and reducing cost per qualified lead from $42 to $11.',
-    tags: ['Make.com', 'Claude API', 'Apify', 'Apollo.io', 'Perplexity API', 'HubSpot', 'Instantly.ai'],
+    description: 'A 5-agent qualification and routing pipeline for inbound supply-chain leads, backed by BANT-S scoring and prompt chaining.',
+    outcome: 'Cut response time from 54 hrs to 6 hrs and reduced qualification workload by 83%.',
+    hoverText: 'Deployed 5 Claude-powered agents with BANT-S scoring. Integrated with HubSpot CRM for automatic lead routing.',
+    visualLabel: 'Agent pipeline',
+    visualType: 'pipeline',
+    tags: ['AI Agents', 'Automation', 'Claude API', 'Apify', 'Apollo.io', 'HubSpot', 'Instantly.ai'],
     href: '#'
   }
 ];

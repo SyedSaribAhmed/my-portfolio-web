@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import CircularMenu from './CircularMenu';
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' }
 ];
 
@@ -38,84 +38,64 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 right-0 z-50 p-6">
-      <div className="flex items-center gap-4">
+    <header className="fixed left-0 right-0 top-0 z-50 px-5 py-5 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <Link
           href="#home"
-          className="text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors"
+          className="group flex items-center gap-2 text-sm font-semibold tracking-tight text-white transition-colors hover:text-[#6bb8c0]"
+          aria-label="Go to home"
         >
-          SA
+          <span className="relative h-9 w-9 overflow-hidden rounded-full border border-white/[0.12] bg-white/[0.04]">
+            <span className="absolute left-2 top-2 h-4 w-4 rotate-45 border-l-2 border-t-2 border-[#4a9ea6]" />
+            <span className="absolute bottom-2 right-2 h-3 w-3 bg-white" />
+          </span>
+          <span className="hidden sm:inline">SA</span>
+        </Link>
+
+        <nav className="hidden rounded-full border border-white/[0.12] bg-[#080a0b]/80 px-3 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl md:block">
+          <ul className="flex items-center gap-1">
+            {navItems.map((item) => {
+              const active = activeSection === item.href.slice(1);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`block rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 ${
+                      active
+                        ? 'bg-white text-[#070809]'
+                        : 'text-slate-300 hover:bg-white/[0.06] hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <Link
+          href="#contact"
+          className="hidden rounded-full border border-[#4a9ea6]/25 bg-[#4a9ea6]/[0.12] px-6 py-3 text-sm font-semibold text-[#a8dce1] shadow-[0_0_35px_rgba(74,158,166,0.12)] transition-all duration-200 hover:border-[#6bb8c0]/50 hover:bg-[#4a9ea6]/[0.18] md:inline-flex"
+        >
+          Start a project
         </Link>
 
         <motion.button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="relative z-50 h-12 w-12 rounded-full bg-white/80 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-105"
+          className="relative z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/[0.12] bg-[#0d1012]/90 text-white shadow-[0_12px_35px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-all duration-300 hover:border-[#4a9ea6]/40 md:hidden"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-slate-700">
-            <motion.path
-              d="M4 6H20M4 12H20M4 18H20"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              animate={isMenuOpen ? { d: 'M6 18L18 6M6 6L18 18' } : { d: 'M4 6H20M4 12H20M4 18H20' }}
-              transition={{ duration: 0.3 }}
-            />
-          </svg>
+          {isMenuOpen ? '✕' : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          )}
         </motion.button>
 
-        <AnimatePresence>
-          {isMenuOpen && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
-              />
-              <motion.nav
-                initial={{ opacity: 0, scale: 0.9, x: 20 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.9, x: 20 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="absolute right-16 top-2 w-56 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl p-4"
-              >
-                <ul className="space-y-1">
-                  {navItems.map((item) => {
-                    const active = activeSection === item.href.slice(1);
-                    return (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setIsMenuOpen(false)}
-                          className={`block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                            active
-                              ? 'bg-slate-900 text-white'
-                              : 'text-slate-700 hover:bg-slate-100'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className="mt-4 pt-4 border-t border-slate-200">
-                  <Link
-                    href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block w-full rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white transition-all duration-200 hover:bg-slate-800"
-                  >
-                    Let's Talk
-                  </Link>
-                </div>
-              </motion.nav>
-            </>
-          )}
-        </AnimatePresence>
+        <CircularMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </header>
   );
