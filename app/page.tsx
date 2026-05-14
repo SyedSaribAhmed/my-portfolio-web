@@ -151,10 +151,72 @@ export default function HomePage() {
       </section>
 
       <section id="resume" className="px-6 py-14 sm:px-8">
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-4xl font-semibold text-white">Resume</h1>
-          <p className="mt-4 text-lg text-slate-300">[Resume content goes here — PDF embed or download link]</p>
-          {/* TODO: Add PDF embed or download link here */}
+        <div className="mx-auto max-w-7xl space-y-10">
+          <SectionHeading title="Resume" subtitle="Professional Profile" />
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_0.8fr]">
+            <div className="space-y-6 rounded-3xl border border-white/10 bg-[#111827]/90 p-10 shadow-neon">
+              <div className="space-y-3">
+                <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Syed Sarib Ahmed</p>
+                <h2 className="text-3xl font-semibold text-white">AI Automation Specialist</h2>
+                <p className="text-sm uppercase tracking-[0.35em] text-slate-500">Remote / Hybrid</p>
+              </div>
+              <div className="space-y-4 text-slate-300">
+                <p>
+                  AI automation engineer with deep experience in generative AI, RAG, prompt orchestration, and workflow engineering. I build production-ready systems that automate manual processes, connect teams with intelligent data, and drive smarter decision-making.
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-3 rounded-3xl border border-white/10 bg-[#0f172a]/80 p-6">
+                    <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Focus Areas</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      <li>Workflow Automation</li>
+                      <li>AI Agents</li>
+                      <li>RAG & Retrieval</li>
+                      <li>Prompt Engineering</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3 rounded-3xl border border-white/10 bg-[#0f172a]/80 p-6">
+                    <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Tools & Platforms</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      <li>Python</li>
+                      <li>TypeScript</li>
+                      <li>LangChain</li>
+                      <li>n8n / Make / Zapier</li>
+                      <li>OpenAI & Anthropic APIs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-3xl border border-white/10 bg-[#0f172a]/90 p-10 shadow-strong">
+                <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Resume</p>
+                <h2 className="mt-4 text-3xl font-semibold text-white">Download the full resume</h2>
+                <p className="mt-4 text-slate-300">
+                  Get a complete overview of my AI automation experience, consulting engagements, and project outcomes.
+                </p>
+                <a
+                  href="#"
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-neonpurple px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-violet"
+                >
+                  Download Resume
+                </a>
+                <p className="mt-6 text-sm text-slate-400">
+                  Note: Replace this link with your hosted PDF or resume download file when ready.
+                </p>
+                {/* TODO: Replace the href above with the actual PDF embed or download link */}
+              </div>
+              <div className="rounded-3xl border border-white/10 bg-[#111827]/90 p-8 shadow-neon">
+                <p className="text-sm uppercase tracking-[0.35em] text-violet/70">Resume highlights</p>
+                <ul className="mt-6 space-y-4 text-sm text-slate-300">
+                  <li>Led autonomous data and workflow automation systems for enterprise clients.</li>
+                  <li>Built generative AI and RAG solutions using OpenAI and Anthropic APIs.</li>
+                  <li>Delivered AI agent orchestration and low-code automation platforms.</li>
+                  <li>Supported product teams with prompt engineering, vector search, and computer vision prototypes.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
