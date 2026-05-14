@@ -7,7 +7,6 @@ import Typewriter from '../components/Typewriter';
 import SkillPill from '../components/SkillPill';
 import SectionHeading from '../components/SectionHeading';
 import TerminalProfile from '../components/TerminalProfile';
-import TimelineItem from '../components/TimelineItem';
 import ProjectsGallery from '../components/ProjectsGallery';
 import ContactForm from '../components/ContactForm';
 import { skills, socialLinks, timeline } from '../lib/data';
@@ -89,17 +88,23 @@ export default function HomePage() {
 
       <section id="experience" className="px-6 py-14 sm:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Experience" subtitle="Career" />
-          <div className="space-y-6">
-            {timeline.map((item, index) => (
-              <TimelineItem
-                key={`${item.role}-${item.company}`}
-                role={item.role}
-                company={item.company}
-                date={item.date}
-                points={item.points}
-                align={index % 2 === 0 ? 'left' : 'right'}
-              />
+          <SectionHeading title="Experience" subtitle="Professional history" />
+          <div className="space-y-8">
+            {timeline.map((item) => (
+              <div key={`${item.role}-${item.company}`} className="rounded-3xl border border-white/10 bg-[#111827]/90 p-8 shadow-neon">
+                <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.35em] text-violet/70">{item.company}</p>
+                    <h3 className="mt-2 text-2xl font-semibold text-white">{item.role}</h3>
+                  </div>
+                  <span className="text-sm text-slate-400">{item.date}</span>
+                </div>
+                <ul className="list-disc space-y-3 pl-5 text-slate-300">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>

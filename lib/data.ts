@@ -23,9 +23,9 @@ export const timeline = [
     company: 'AutomationLab Co.',
     date: '2024 — Present',
     points: [
-      'Built autonomous workflows using LangChain and n8n to automate data ingestion and reporting.',
-      'Designed AI agents for customer support routing and backend orchestration.',
-      'Reduced manual task overhead by 60% through end-to-end automation solutions.'
+      'Lead the design and deployment of AI-driven workflow automation systems using LangChain, n8n, and Python.',
+      'Built autonomous orchestration pipelines for data ingestion, processing, and reporting across enterprise systems.',
+      'Scaled agent-based automations to reduce manual task overhead by over 60% and accelerate decision-making.'
     ]
   },
   {
@@ -33,9 +33,9 @@ export const timeline = [
     company: 'Freelance / Contract',
     date: '2023 — 2024',
     points: [
-      'Delivered generative AI prototypes for product teams and startups.',
-      'Integrated OpenAI and Anthropic APIs into bespoke web and automation platforms.',
-      'Created production-ready prompt frameworks for RAG and vector search systems.'
+      'Delivered generative AI prototypes and automation solutions for startups and product teams.',
+      'Integrated OpenAI and Anthropic APIs into custom platforms for conversational assistants and knowledge workflows.',
+      'Created production-ready prompt frameworks and RAG systems to improve search relevance and content summarization.'
     ]
   },
   {
@@ -43,9 +43,9 @@ export const timeline = [
     company: 'Neo Labs',
     date: '2022 — 2023',
     points: [
-      'Developed computer vision pipelines for anomaly detection and process monitoring.',
-      'Experimented with retrieval-augmented generation and embedding search strategies.',
-      'Collaborated on cross-functional AI product roadmaps and technical documentation.'
+      'Built computer vision pipelines for anomaly detection and automated process monitoring.',
+      'Developed retrieval-augmented generation workflows and embedding search prototypes for internal research.',
+      'Partnered with cross-functional teams on AI product strategy, technical documentation, and deployment planning.'
     ]
   }
 ];
