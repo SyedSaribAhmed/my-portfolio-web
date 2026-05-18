@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ParticleCanvas from '../components/ParticleCanvas';
 import ProjectsGallery from '../components/ProjectsGallery';
+import IntroCompiler from '../components/IntroCompiler';
 import { skills, socialLinks, timeline } from '../lib/data';
 
 const heroVariants = {
@@ -44,7 +45,7 @@ export default function HomePage() {
       <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-28 sm:px-8">
         <ParticleCanvas />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_24%,rgba(34,211,238,0.08),transparent_48%)]" />
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1fr_0.82fr] lg:items-center">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-1 lg:items-center">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -65,7 +66,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-8 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
+              className="mt-8 max-w-4xl mx-auto text-center text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
             >
               AI automation engineer crafting clear digital systems.
             </motion.h1>
@@ -74,7 +75,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg"
+              className="mt-6 max-w-2xl mx-auto text-center text-base leading-8 text-slate-400 sm:text-lg"
             >
               I design and build production-ready agents, dashboards, and workflow automations with clean interfaces, sharp logic, and measurable outcomes.
             </motion.p>
@@ -83,7 +84,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-10 flex flex-col gap-3 sm:flex-row"
+              className="mt-10 flex flex-col gap-3 sm:flex-row justify-center"
             >
               <Link
                 href="/case-studies"
@@ -104,46 +105,9 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.35 }}
-            className="relative rounded-3xl border border-white/10 bg-[#0c0f11]/75 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+            className="relative rounded-3xl p-5"
           >
-            <div className="mb-5 flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.26em] text-[#6bb8c0]/70">Selected build</p>
-                <h2 className="mt-2 text-xl font-semibold text-white">Automation command surface</h2>
-              </div>
-              <span className="rounded-full border border-[#4a9ea6]/25 bg-[#4a9ea6]/10 px-3 py-1 text-xs text-[#a8dce1]">Live</span>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-[1fr_0.72fr]">
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-                <div className="mb-5 h-2 w-28 rounded-full bg-[#4a9ea6]/50" />
-                <div className="space-y-3">
-                  {['Lead captured', 'Agent scored', 'CRM routed', 'Follow-up drafted'].map((item, index) => (
-                    <div key={item} className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-[#090b0d] px-3 py-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#4a9ea6]/[0.12] text-xs text-[#a8dce1]">
-                        {index + 1}
-                      </span>
-                      <span className="text-sm text-slate-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-                  <p className="text-xs text-slate-500">Response time</p>
-                  <p className="mt-2 text-3xl font-semibold text-white">6 hrs</p>
-                  <div className="mt-4 h-1.5 rounded-full bg-white/[0.08]">
-                    <span className="block h-full w-4/5 rounded-full bg-[#4a9ea6]/80" />
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
-                  <p className="text-xs text-slate-500">Workload reduced</p>
-                  <p className="mt-2 text-3xl font-semibold text-white">83%</p>
-                  <div className="mt-4 h-1.5 rounded-full bg-white/[0.08]">
-                    <span className="block h-full w-5/6 rounded-full bg-[#4a9ea6]/80" />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <IntroCompiler />
           </motion.div>
         </div>
       </section>
