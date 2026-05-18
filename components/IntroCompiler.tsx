@@ -33,15 +33,13 @@ export default function IntroCompiler() {
 
 function CompilerBox({ onClose }: { onClose: () => void }) {
   const lines = [
-    "def intro():",
-    "    name = \"Syed Sarib Ahmed\"",
-    "    title = \"AI Automation Specialist\"",
-    "    location = \"Remote / Hybrid\"",
-    "    focus = [\"Workflow Automation\", \"AI Agents\", \"RAG\"]",
-    "    tools = [\"Python\", \"TypeScript\", \"LangChain\"]",
-    "    print(f\"Hi, I'm {name} — {title}. I build production-ready agents and automations.\")",
-    "",
-    "# click anywhere to close"
+    'def intro():',
+    '    print("I\'m Syed Sarib Ahmed, a Full-Stack AI Engineer specializing in LLM systems, AI automation, and production-grade backend development.")',
+    '    print("I\'ve trained frontier language models through RLHF pipelines, built multi-agent automation workflows that cut lead response time by 9x,")',
+    '    print("and shipped full-stack applications with real-time WebSocket dashboards and OpenAI-powered analytics.")',
+    '    print("I work across the full AI engineering stack, from prompt engineering and RAG pipelines to Node.js APIs and cloud deployment on AWS and Azure.")',
+    '',
+    '# click anywhere to close'
   ];
 
   const [content, setContent] = useState('');
@@ -55,15 +53,15 @@ function CompilerBox({ onClose }: { onClose: () => void }) {
       const t = setTimeout(() => {
         setContent((c) => c + currentLine.charAt(charIndex));
         setCharIndex((i) => i + 1);
-      }, 20 + Math.random() * 40);
+      }, 6 + Math.random() * 12);
       return () => clearTimeout(t);
     }
-    // move to next line
+    // move to next line faster
     const nl = setTimeout(() => {
       setContent((c) => c + '\n');
       setLineIndex((li) => li + 1);
       setCharIndex(0);
-    }, 200);
+    }, 80);
     return () => clearTimeout(nl);
   }, [charIndex, lineIndex]);
 
@@ -75,23 +73,17 @@ function CompilerBox({ onClose }: { onClose: () => void }) {
       onClick={onClose}
       className="mx-auto max-w-3xl cursor-pointer rounded-3xl border border-white/10 bg-[#071014]/80 p-6 text-sm text-slate-200 shadow-strong sm:p-8"
     >
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
-          <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-          <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
-        </div>
-        <div className="text-xs text-slate-400">pseudo-python compiler</div>
+      <div className="mb-4 flex items-center gap-2">
+        <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+        <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+        <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
       </div>
 
       <pre className="whitespace-pre-wrap break-words font-mono text-[0.95rem] leading-6">
         <code>{content}</code>
       </pre>
 
-      <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
-        <span>Click anywhere to close</span>
-        <span>Responsive • Reactive</span>
-      </div>
+      <div className="mt-4 text-xs text-slate-400">Click anywhere to close</div>
     </motion.div>
   );
 }

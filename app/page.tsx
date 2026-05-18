@@ -52,63 +52,12 @@ export default function HomePage() {
             variants={heroVariants}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300 backdrop-blur-sm"
-            >
-              <span className="h-2 w-2 rounded-full bg-[#4a9ea6] shadow-[0_0_16px_rgba(74,158,166,0.8)]" />
-              Available for focused automation builds
-            </motion.span>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-8 max-w-4xl mx-auto text-center text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
-            >
-              AI automation engineer crafting clear digital systems.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 max-w-2xl mx-auto text-center text-base leading-8 text-slate-400 sm:text-lg"
-            >
-              I design and build production-ready agents, dashboards, and workflow automations with clean interfaces, sharp logic, and measurable outcomes.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-10 flex flex-col gap-3 sm:flex-row justify-center"
-            >
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center justify-center rounded-full border border-[#4a9ea6]/[0.35] bg-[#4a9ea6]/[0.14] px-8 py-3.5 text-sm font-semibold text-[#a8dce1] shadow-[0_0_30px_rgba(74,158,166,0.12)] transition-all duration-200 hover:border-[#6bb8c0]/60 hover:bg-[#4a9ea6]/20"
-              >
-                View case studies
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white/20 hover:bg-white/[0.08]"
-              >
-                Start a project
-              </Link>
-            </motion.div>
+            <div className="mt-8 flex w-full items-center justify-center">
+              <IntroCompiler />
+            </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.35 }}
-            className="relative rounded-3xl p-5"
-          >
-            <IntroCompiler />
-          </motion.div>
+          {/* removed secondary panel to keep hero focused */}
         </div>
       </section>
 
