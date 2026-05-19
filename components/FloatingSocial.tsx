@@ -8,7 +8,7 @@ export default function FloatingSocial() {
   const items = socialLinks.filter(s => ['LinkedIn','GitHub','Email'].includes(s.label)).slice(0,3);
 
   return (
-    <div className="fixed left-6 top-1/2 z-40 -translate-y-1/2 hidden flex-col gap-3 md:flex">
+    <div className="sticky top-28 z-40 hidden ml-6 flex-col gap-3 self-start md:flex">
       {items.map((item, idx) => (
         <motion.a
           key={item.label}
