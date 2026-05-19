@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import ParticleCanvas from '../components/ParticleCanvas';
 import ProjectsGallery from '../components/ProjectsGallery';
 import IntroCompiler from '../components/IntroCompiler';
+import FloatingSocial from '../components/FloatingSocial';
 import { skills, socialLinks, timeline } from '../lib/data';
 
 const heroVariants = {
@@ -44,6 +45,7 @@ export default function HomePage() {
     <>
       <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-28 sm:px-8">
         <ParticleCanvas />
+        <FloatingSocial />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_24%,rgba(34,211,238,0.08),transparent_48%)]" />
         <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-1 lg:items-center">
           <motion.div

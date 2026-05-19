@@ -52,18 +52,18 @@ export default function Navbar() {
           <span className="hidden sm:inline">SA</span>
         </Link>
 
-        <nav className="hidden rounded-full border border-white/[0.12] bg-[#080a0b]/80 px-3 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl md:block">
-          <ul className="flex items-center gap-1">
+        <nav className="hidden mx-auto rounded-full border border-white/[0.06] bg-gradient-to-b from-white/[0.02] to-transparent px-3 py-2 shadow-[0_12px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl md:block">
+          <ul className="flex items-center gap-1 justify-center">
             {navItems.map((item) => {
               const active = activeSection === item.href.slice(1);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`block rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 ${
+                    className={`block rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 transform will-change-auto ${
                       active
-                        ? 'bg-white text-[#070809]'
-                        : 'text-slate-300 hover:bg-white/[0.06] hover:text-white'
+                        ? 'bg-white text-[#070809] shadow-[0_8px_30px_rgba(74,158,166,0.18)]'
+                        : 'text-slate-300 hover:bg-white/[0.06] hover:text-white hover:scale-105 hover:shadow-[0_8px_30px_rgba(74,158,166,0.08)]'
                     }`}
                   >
                     {item.label}
